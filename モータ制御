@@ -1,7 +1,7 @@
-  int sp = 200;
-  int input;
-  int tim = 110;
-  int st = 50;
+int sp = 200;
+int input;
+int tim = 110;
+int st = 50;
   
 void setup(){
   pinMode(10,OUTPUT); //信号用ピン
@@ -15,61 +15,63 @@ void setup(){
 
 void loop(){
   input = Serial.read();
-  
-  if(input == 'a'){
-  //A
-    //正転
-     digitalWrite(10,HIGH);
-     digitalWrite(11,LOW);
-     analogWrite(12,sp);
-    delay(tim);
-   //逆転
-     digitalWrite(10,LOW);
-     digitalWrite(11,HIGH);
-     analogWrite(12,sp);
-    delay(tim);
-   //停止
-     digitalWrite(10,HIGH);
-     digitalWrite(11,LOW);
-     analogWrite(12,0);
-    delay(st);
-  }
-  
-  if(input == 'b'){
-  //B
-    //正転
+    //Left
+    if(input == 'L'){
+      //正転
+      digitalWrite(10,HIGH);
+      digitalWrite(11,LOW);
+      analogWrite(12,sp);
+      delay(tim);
+      //逆転
+      digitalWrite(10,LOW);
+      digitalWrite(11,HIGH);
+      analogWrite(12,sp);
+      delay(tim);
+      //停止
+      digitalWrite(10,HIGH);
+      digitalWrite(11,LOW);
+      analogWrite(12,0);
+      delay(st);
+      Serial.write("E");
+    }
+    
+    //Center
+    if(input == 'C'){
+      //正転
       digitalWrite(4,HIGH);
       digitalWrite(5,LOW);
       analogWrite(6,sp);
-     delay(tim);
-   //逆転
+      delay(tim);
+      //逆転
       digitalWrite(4,LOW);
       digitalWrite(5,HIGH);
       analogWrite(6,sp);
-    delay(tim);
-   //停止
+      delay(tim);
+      //停止
       digitalWrite(4,LOW);
       digitalWrite(5,HIGH);
       analogWrite(6,0);
-    delay(st);
-  }
-  
-  if(input == 'c'){
-    //正転
+      delay(st);
+      Serial.write("E");
+    }
+    
+    //Right
+    if(input == 'R'){
+      //正転
       digitalWrite(7,HIGH);
       digitalWrite(8,LOW);
       analogWrite(9,sp);
-     delay(tim);
-   //逆転
+      delay(tim);
+      //逆転
       digitalWrite(7,LOW);
       digitalWrite(8,HIGH);
       analogWrite(9,sp);
-    delay(tim);
-   //停止
+      delay(tim);
+      //停止
       digitalWrite(7,LOW);
       digitalWrite(8,HIGH);
       analogWrite(9,0);
-    delay(st);
-  }
-
+      delay(st);
+      Serial.write("E");
+    }
 }
